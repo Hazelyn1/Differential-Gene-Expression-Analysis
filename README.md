@@ -4,7 +4,7 @@ https://www.ncbi.nlm.nih.gov/sites/GDSbrowser?acc=GDS5306
 
 Starts by loading the GEO data into R using the GEOquery package and saving that data to a variable.
 
-Analysis begins with identifying outliers with visual methods:
+Analysis begins with identifying outliers using visual methods:
 - correlation plot
 - heirarchical clustering dendrogram
 - CV vs. mean plot
