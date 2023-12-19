@@ -6,7 +6,7 @@
 #https://www.ncbi.nlm.nih.gov/sites/GDSbrowser?acc=GDS5306 “Human epidermal growth factor receptor 2-positive breast cancer brain metastases”
 
 #Please see end of powerpoint presentnation for all references
-#............................................................................................................................................................
+#....................................................................................................
 
 #Using GEOquery to load in the data:
 #Code:
