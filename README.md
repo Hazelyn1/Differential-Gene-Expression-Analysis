@@ -9,7 +9,8 @@ Analysis begins with identifying outliers using visual methods:
 - heirarchical clustering dendrogram
 - CV vs. mean plot
 - average correlation plot
-And identified outliers must be removed before continuing
+
+Identified outliers must be removed before continuing
 
 Next, genes with low expression levels are filtered out using the edgeR package. The expression level of each gene is assessed by its "counts per million" or CPM value, which is given by:
 
