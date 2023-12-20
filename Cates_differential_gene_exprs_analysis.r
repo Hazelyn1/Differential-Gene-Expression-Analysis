@@ -27,7 +27,7 @@ dim(exprs_data)
 
 #Retrieving gene names:
 exprs_data_names <- exprs_data$IDENTIFIER 
-............................................................................................................................................................
+#.........................................................................................................
 
 #Outlier analysis: 
 #Starting with correlation plot:
@@ -37,7 +37,7 @@ exprs_data_cor <- cor( exprs_data[, 3:40], use = "pairwise.complete.obs", method
 #Now plot correlation plot:
 corrplot(exprs_data_cor, method = 'color', mar=c(0,0,1,0), tl.cex = 0.5)
 title("Expression levels of brain metastatic breast cancer samples\n and primary breast cancer samples", line = 1.7)
-...........
+#...........
 
 #Second, a hierarchical clustering dendrogram:
 exprs_data_t <- t(exprs_data[, 3:40]) #transpose data frame
@@ -46,7 +46,7 @@ exprs_data_clust <- hclust(exprs_data_dist, method = "single") #form clusters wi
 
 #Plot the dendrogram:
 plot(exprs_data_clust, main = "Dendrogram of Metastatic and non-metastatic HER2+ breast cancer samples", xlab = "Distance")
-...........
+#...........
 
 #Third, a CV vs. mean plot:
 exprs_data_mean <- apply(log2(exprs_data[, 3:40]), 2, mean) #calculate means across the columns of the expression  data
@@ -71,7 +71,7 @@ library(ggrepel)
 
 ggplot(exprs_data_df, aes(x = Mean, y = CV, label = exprs_data_lab)) +geom_point(color = "lightblue") + geom_text_repel() + labs(title = "HER2+ metastatic and nonmetastatic breast cancer samples\nCV vs. Mean") + theme(plot.title = element_text(hjust = 0.5))
 
-...........
+#...........
 #Lastly, an average correlation plot:
 #First, get mean values from correlation results found above:
 exprs_data_avg <- apply(exprs_data_cor, 1, mean) #going by row
@@ -88,7 +88,7 @@ axis(2)
 
 #Adding vertical separator lines to help visualization:
 abline(v = seq(0.5, 62.5, 1,), col = "black")
-............................................................................................................................................................
+#...............................................................................................
 
 Filtering out genes w/ low expression: 
 if (!require("BiocManager", quietly = TRUE))
@@ -128,7 +128,7 @@ for(i in 1:length(CPM_keep)){
          keep_genes <- append(keep_genes, names(CPM_keep[i]))
      }
 }
-............................................................................................................................................................
+#..............................................................................................
 
 #Next, perform a statistical test for feature selection: 
 #Using a two-sample student’s t-test for all the genes remaining following the above filtering (now using the “exprs_data_keep” variable) and extracting the p-values:
@@ -153,7 +153,7 @@ exprs_data_keep_pv <- apply(exprs_data_keep_log2, 1, t_test_all_genes, s1_sample
 
 #Plotting a histogram of the unadjusted p-values:
 hist(exprs_data_keep_pv, col = "lightblue", xlab = "p-values", main = "P-value distribution between metastatic and non-metastatic primary HER2+ breast cancer samples")
-............................................................................................................................................................
+#..............................................................................................
 
 #Next, adjust the p-values for multiplicity using the Bonferroni method: 
 exprs_data_keep_pv_adj <- p.adjust(exprs_data_keep_pv, method = "bonferroni")
@@ -185,7 +185,7 @@ pv_genes <- as.numeric(pv_genes)
 
 #Histogram of the p-value distribution of those 6,190 genes:
 hist(as.numeric(unlist(p_vals)), col = "lightblue", xlab = "p-values", main = "P-value distribution of genes with a p-value < 0.05")
-............................................................................................................................................................
+#..............................................................................................
 
 #Subset the 6,190 genes from my “exprs_data_keep” variable, the latter which has the 58000+ genes. So, I need to grab out all 38 columns from each row where the genes match up.
 exprs_data_keep_names <- rownames(exprs_data_keep)
@@ -207,7 +207,7 @@ for(i in 1:length(keep_genes)){ #58000+ iterations
        }  
   }   
 }
-............................................................................................................................................................
+#..........................................................................................
 
 #Next, performing dimensionality reduction using classical multidimensional scaling (MDS): 
 #”genes_data” is the new data frame that contains the 6,190 genes
@@ -225,7 +225,7 @@ points(genes_data_loc[20:38, 1], genes_data_loc[20:38, 2], pch = 16, col = "gree
 
 #Adding legend:
 legend("topleft", legend = c("metastatic samples", "primary breast cancer samples"), col = c("blue", "green"), pch = 16, cex = 0.5)
-............................................................................................................................................................
+#........................................................................................
 
 #Next, classification via LDA:
 genes_data_clas1 <- rep("metastatic", 18)
@@ -250,7 +250,7 @@ points(genes_data_predict$x[1:18, ], col = "blue", pch = 16)
 axis(1, at = c(1:38), names(genes_data[3:40]), las=2, cex.axis=0.4)
 axis(2)
 legend("topleft", col = c("blue", "black"), pch = 16, cex = 0.6, legend = c("Metastatic", "Non-metastatic"))
-............................................................................................................................................................
+#..........................................................................................
 
 #Getting the 10 discriminant genes:
 #First, obtain scaling data from lda results:
