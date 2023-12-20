@@ -16,4 +16,10 @@ Next, genes with low expression levels are filtered out using the edgeR package.
 
 𝐶𝑃𝑀 = (# 𝑟𝑒𝑎𝑑𝑠 𝑚𝑎𝑝𝑝𝑒𝑑 𝑡𝑜 𝑔𝑒𝑛𝑒 × 10^6)/(𝑡𝑜𝑡𝑎𝑙 # 𝑚𝑎𝑝𝑝𝑒𝑑 𝑟𝑒𝑎𝑑𝑠)
 
+Genes are only kept if they have a CPM value greater than 0.5, indicating they have a sufficiently high expression. These genes are then subsetted to their own matrix. This matrix is now the dataset for the remainder of the analysis. 
+
+Next, feature selection is done using the two-sample student’s t-test. In the case of the dataset linked above, the two samples are metastatic breast cancer samples and primary non-metastatic breast cancer samples. A histogram is plotted to visually represent the results. 
+
+
+
 
