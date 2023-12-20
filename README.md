@@ -32,7 +32,7 @@ Next, Linear Discriminant Analysis (LDA) is performed for classification of the 
 
 The results of the prediction are then plotted, with each sample being assigned a different color (i.e. metastatic samples are blue points, non-metastatic samples are black points).
 
-Lastly, the top 5 highly expressed and bottom 5 lowly-expressed genes are identified from the filtered p-value gene set (same as above). This begins with scaling the LDA results and sorting them in increasing order, where the top five genes are the most lowly expressed and the bottom five are the most highly expressed in the dataset.  
+Lastly, the top 5 highly expressed and bottom 5 lowly-expressed genes are identified from the same filtered p-value gene set. This begins with scaling the LDA results and sorting them in increasing order, where the top five genes are the most lowly expressed and the bottom five are the most highly expressed in the dataset.  
 
 
 
